@@ -1,0 +1,75 @@
+* {
+    text-align: center;
+}
+
+#container {
+    width: 50%;
+    margin: auto;
+    height: 500px;
+    background-color: gray;
+    /*text-align: center;*/
+}
+
+#boxes {
+    width: 80%;
+    height: 80%;
+    margin-top: 7%;
+    display: inline-block;
+}
+
+.box {
+    width: 45%;
+    height: 45%;
+    display: inline-block;
+    margin: 2%;
+}
+
+.red {
+    background-color: red;
+    opacity: .3;
+}
+
+.green {
+    background-color: green;
+    opacity: .3;
+}
+
+.blue {
+    background-color: blue;
+    opacity: .3;
+}
+
+.yellow {
+    background-color: yellow;
+    opacity: .3;
+}
+
+.light-up {
+    opacity: 1;
+}
+
+.start-container {
+    /*text-align: center;*/
+    size: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+#start-btn {
+    margin-top: 3%;
+    height: 50px;
+    width: 60px;
+}
+
+.round-label {
+    display: none;
+}
+
+.active {
+    display: inline-block;
+}
+
+
+

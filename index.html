@@ -3,16 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Simple Simon</title>
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
 
 <!-- Page Title -->
+<h1>Simple Simon</h1>
 
 <!-- Create 4 divs to display the sequence Simple Simon generates and user to click on -->
 
-<!-- Create a start button -->
+<div id="container">
+    <div id="boxes">
+        <div class="box red"></div>
+        <div class="box green"></div>
+        <div class="box blue"></div>
+        <div class="box yellow"></div>
+    </div>
+</div>
 
+<!-- Create a start button -->
+<div class="start-container">
+    <button id="start-btn">Start</button>
+</div>
 <!-- Label for the round that you are currently on -->
+
+<div class="round-label">
+    <p><strong>Current Round: </strong><span id="round"><strong>1</strong></span></p>
+</div>
 
 <script>
     (function() {
