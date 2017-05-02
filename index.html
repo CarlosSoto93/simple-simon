@@ -14,16 +14,16 @@
 
 <div id="container">
     <div id="boxes">
-        <div class="box red"></div>
-        <div class="box green"></div>
-        <div class="box blue"></div>
-        <div class="box yellow"></div>
+        <div class="box red" data-value="1"></div>
+        <div class="box green" data-value="2"></div>
+        <div class="box blue" data-value="3"></div>
+        <div class="box yellow" data-value="4"></div>
     </div>
 </div>
 
 <!-- Create a start button -->
 <div class="start-container">
-    <button id="start-btn">Start</button>
+    <button id="start-btn">New Game</button>
 </div>
 <!-- Label for the round that you are currently on -->
 
@@ -31,20 +31,159 @@
     <p><strong>Current Round: </strong><span id="round"><strong>1</strong></span></p>
 </div>
 
+<!-- JQuery -->
+<script
+        src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+
 <script>
-    (function() {
+    (function () {
         "use strict";
 
         //Allow user to start the game by clicking on the start button
 
+        $('#start-btn').click(function () {
+            $('.start-container').addClass('hidden');
+            $('.round-label').addClass('active');
+            generatePattern();
+            console.log(sequence);
+
+
+        });
+
         //Once start is clicked, Simon will generate and display a step for user to follow/repeat.
+        var sequence = [];
+        var userInput = [];
+        var i = 0;
+        var red = 1;
+        var green = 2;
+        var blue = 3;
+        var yellow = 4;
+
+        function random() {
+            return Math.floor((Math.random() * 4) + 1);
+        }
+
+
+        //generate a color to add to the sequence
+
+        function generatePattern() {
+            sequence.push(random());
+            setTimeout(function () {
+                displayPattern();
+            }, 1000);
+        }
+
+
+        function lightUp(color) {
+            $(color).addClass('light-up');
+            setTimeout(function () {
+                $(color).removeClass('light-up');
+            }, 400);
+        }
+
+
+        //display Pattern
+        function displayPattern() {
+            var i = 0;
+            var intervalId = setInterval(function () {
+
+                switch (sequence[i]) {
+                    case 1:
+                        lightUp('.red');
+                        break;
+                    case 2:
+                        lightUp('.green');
+                        break;
+                    case 3:
+                        lightUp('.blue');
+                        break;
+                    case 4:
+                        lightUp('.yellow');
+                        break;
+                }
+
+                if (i == sequence.length - 1) {
+                    clearInterval(intervalId);
+                } else {
+                    i++;
+                }
+
+            }, 500);
+
+        }
 
         //Allow user to repeat pattern that was shown
 
-            //If user is correct in pattern given, update the round that the user in in
-            // allow Simon to generate an additional step to add on the existing pattern
 
-            //If user fail, alert will be given and Simon pattern will be reset until user starts new game.
+        //Make buttons light up on click
+        $('.box').click(function () {
+            lightUp(this);
+        });
+
+        var roundCounter = 1;
+
+        $('.box').click(function () {
+//             var i = 0;
+            var boxValue = parseFloat($(this).attr('data-value'));
+            userInput.push(boxValue);
+
+            console.log(userInput);
+
+            if(boxValue === sequence[i]) {
+                i++;
+                if(userInput.length === sequence.length) {
+                    generatePattern();
+                    console.log(sequence);
+                    i = 0;
+                    userInput = [];
+                    $('#round').innerHTML = roundCounter;
+                    roundCounter++;
+
+                }
+
+            } else {
+                i = 0;
+                sequence = [];
+                userInput = [];
+                $('.start-container').removeClass('hidden');
+                $('.round-label').removeClass('active');
+                alert("You Lose!! :'" +"(")
+
+
+            }
+
+
+
+//
+//            console.log('var i = '+i);
+//            console.log('sequence.lenght =' +sequence.length);
+//            console.log('boxValue = ' +boxValue);
+//            console.log('value at seqyence index i index = ' +sequence[i]);
+//            console.log('clicks =' + clicks);
+//            console.log('--------------------------------');
+//
+//
+//            if (boxValue === sequence[i]) {
+////                console.log(boxValue);
+//                i++;
+//                clicks++;
+//
+//                if (clicks >= sequence.length) {
+//
+//                    generatePattern();
+//                    console.log(sequence);
+//
+//                }
+//            } else {
+//                i = 0;
+//            }
+        });
+        //If user is correct in pattern given, update the round that the user in in
+        // allow Simon to generate an additional step to add on the existing pattern
+
+        //If user fail, alert will be given and Simon pattern will be reset until user starts new game.
 
     })();
 </script>
