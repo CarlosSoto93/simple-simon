@@ -28,7 +28,7 @@
 <!-- Label for the round that you are currently on -->
 
 <div class="round-label">
-    <p><strong>Current Round: </strong><span id="round"><strong>1</strong></span></p>
+    <p><strong>Current Round: </strong><span ><strong id="round">1</strong></span></p>
 </div>
 
 <!-- JQuery -->
@@ -138,8 +138,8 @@
                     console.log(sequence);
                     i = 0;
                     userInput = [];
-                    $('#round').innerHTML = roundCounter;
                     roundCounter++;
+                    $('#round').html(roundCounter);
 
                 }
 
