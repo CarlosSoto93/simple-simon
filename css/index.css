@@ -1,60 +1,191 @@
 * {
     text-align: center;
+    background-color: transparent;
 }
 
-#container {
-    width: 50%;
-    margin: auto;
+html {
+    background-image: url('../img/spiral.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes red-fade {
+    0%,  66% {
+        opacity: 0;
+    }
+    33% {
+        opacity: 1;
+        background-color: red;
+        border-color: white;
+    }
+    100% {
+        border_color: red;
+    }
+}
+
+@keyframes green-fade {
+    0%,  66% {
+        opacity: 0;
+    }
+    33% {
+        opacity: 1;
+        background-color: green;
+        border-color: white;
+    }
+    100% {
+        border_color: green;
+    }
+}
+
+@keyframes blue-fade {
+    0%,  66% {
+        opacity: 0;
+    }
+    33% {
+        opacity: 1;
+        background-color: blue;
+        border-color: white;
+    }
+    100% {
+        border_color: blue;
+    }
+}
+
+@keyframes yellow-fade {
+    0%,  66% {
+        opacity: 0;
+    }
+    33% {
+        opacity: 1;
+        background-color: yellow;
+        border-color: white;
+    }
+    100% {
+        border_color: yellow;
+    }
+}
+
+@keyframes font-style {
+    0%, 100% {
+        font-size: inherit;
+    }
+    50% {
+        font-size: 50px;
+        color: green;
+    }
+}
+
+#title {
+    color: white;
+}
+
+.container {
+    width: 500px;
     height: 500px;
-    background-color: gray;
+    margin: auto;
+    border: solid 5px white;
+    background-color: transparent;
+    border-radius: 7%;
+    animation: fade-in 3s;
     /*text-align: center;*/
+}
+
+.border-correct {
+    border: solid 5px green;
+}
+
+.border-wrong {
+    border:solid 5px red;
 }
 
 #boxes {
     width: 80%;
     height: 80%;
-    margin-top: 7%;
+    margin-top: 13%;
     display: inline-block;
 }
 
 .box {
-    width: 45%;
-    height: 45%;
+    width: 40%;
+    height: 40%;
     display: inline-block;
     margin: 2%;
+    border-radius: 7%;
+    border: solid 2px;
 }
 
 .red {
+    /*background-color: red;*/
+    /*opacity: .5;*/
+    border-color: red;
+}
+
+.red-intro {
+    animation: red-fade 3s;
+}
+
+.light-up-red {
     background-color: red;
-    text-decoration-color: red;
-    opacity: .3;
+    border: solid 2px white;
 }
 
 .green {
+    /*background-color: green;*/
+    /*opacity: .5;*/
+    border-color: green;
+}
+
+.green-intro {
+    animation: green-fade 3s;
+
+}
+
+.light-up-green {
     background-color: green;
-    text-decoration-color: green;
-    opacity: .3;
+    border: solid 2px white;
 }
 
 .blue {
+    /*background-color: blue;*/
+    /*opacity: .5;*/
+    border-color: blue;
+}
+
+.blue-intro {
+    animation: blue-fade 3s;
+}
+
+.light-up-blue {
     background-color: blue;
-    text-decoration-color: blue;
-    opacity: .3;
+    border: solid 2px white;
 }
 
 .yellow {
-    background-color: yellow;
-    text-decoration-color: yellow;
-    opacity: .3;
+    border-color: yellow;
 }
 
-.light-up {
-    opacity: 1;
+.yellow-intro {
+    animation: yellow-fade 3s;
+}
+
+.light-up-yellow {
+    background-color: yellow;
+    border: solid 2px white;
 }
 
 .start-container {
     /*text-align: center;*/
     size: 20px;
+    color: white
 }
 
 .hidden {
@@ -65,10 +196,23 @@
     margin-top: 3%;
     height: 50px;
     width: 60px;
+    color: white;
 }
 
 .round-label {
     display: none;
+}
+
+#current-round {
+    color: white;
+}
+
+#round {
+    color: white;
+}
+
+.round-animate {
+    animation: font-style 2s;
 }
 
 .active {

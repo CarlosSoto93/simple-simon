@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Simple Simon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
 
 <!-- Page Title -->
-<h1>Simple Simon</h1>
+<h1 id="title">Simple Simon</h1>
 
 <!-- Create 4 divs to display the sequence Simple Simon generates and user to click on -->
 
-<div id="container">
+<div class="container">
     <div id="boxes">
-        <div class="box red" data-value="1"></div>
-        <div class="box green" data-value="2"></div>
-        <div class="box blue" data-value="3"></div>
-        <div class="box yellow" data-value="4"></div>
+        <div class="box red red-intro" data-value="1"></div>
+        <div class="box green green-intro" data-value="2"></div>
+        <div class="box blue blue-intro" data-value="3"></div>
+        <div class="box yellow yellow-intro" data-value="4"></div>
     </div>
 </div>
 
@@ -28,7 +29,8 @@
 <!-- Label for the round that you are currently on -->
 
 <div class="round-label">
-    <p><strong>Current Round: </strong><span ><strong id="round">1</strong></span></p>
+    <p><strong id="current-round">Current Round: </strong></p>
+    <p><span ><strong id="round" class="round-animate">1</strong></span></p>
 </div>
 
 <!-- JQuery -->
@@ -76,11 +78,25 @@
         }
 
 
-        function lightUp(color) {
-            $(color).addClass('light-up');
+        function lightUp(box, color) {
+            $(box).addClass('light-up-' + color);
             setTimeout(function () {
-                $(color).removeClass('light-up');
+                $(box).removeClass('light-up-' + color);
             }, 400);
+        }
+
+        function borderLight(result) {
+            $('.container').addClass('border-' + result);
+            setTimeout(function() {
+                $('.container').removeClass('border-' + result);
+            }, 400);
+        }
+
+        function roundNumber() {
+            $('#round').removeClass('round-animate');
+            setTimeout(function() {
+                $('#round').addClass('round-animate');
+            }, 1);
         }
 
 
@@ -91,16 +107,16 @@
 
                 switch (sequence[i]) {
                     case 1:
-                        lightUp('.red');
+                        lightUp('.red', 'red');
                         break;
                     case 2:
-                        lightUp('.green');
+                        lightUp('.green', 'green');
                         break;
                     case 3:
-                        lightUp('.blue');
+                        lightUp('.blue', 'blue');
                         break;
                     case 4:
-                        lightUp('.yellow');
+                        lightUp('.yellow', 'yellow');
                         break;
                 }
 
@@ -118,8 +134,20 @@
 
 
         //Make buttons light up on click
-        $('.box').click(function () {
-            lightUp(this);
+        $('.red').click(function () {
+            lightUp(this, 'red');
+        });
+
+        $('.green').click(function () {
+            lightUp(this, 'green');
+        });
+
+        $('.blue').click(function () {
+            lightUp(this, 'blue');
+        });
+
+        $('.yellow').click(function () {
+            lightUp(this, 'yellow');
         });
 
         var roundCounter = 1;
@@ -140,6 +168,9 @@
                     userInput = [];
                     roundCounter++;
                     $('#round').html(roundCounter);
+                    roundNumber();
+                    borderLight('correct')
+
 
                 }
 
@@ -149,7 +180,10 @@
                 userInput = [];
                 $('.start-container').removeClass('hidden');
                 $('.round-label').removeClass('active');
-                alert("You Lose!! :'" +"(")
+//                alert("You Lose!! :'" +"(");
+                roundCounter = 1;
+                $('#round').html(1);
+                borderLight('wrong');
 
 
             }
