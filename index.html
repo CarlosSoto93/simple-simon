@@ -9,7 +9,25 @@
 <body>
 
 <!-- Page Title -->
-<h1 id="title">Simple Simon</h1>
+<h1 id="title">
+    <span id="S-simple">S</span>
+    <span id="i-simple">i</span>
+    <span id="m-simple">m</span>
+    <span id="p">p</span>
+    <span id="l">l</span>
+    <span id="e">e</span>
+    <span id="S-simon">S</span>
+    <span id="i-simon">i</span>
+    <span id="m-simon">m</span>
+    <span id="o">o</span>
+    <span id="n">n</span>
+</h1>
+
+<!-- your top score -->
+
+<div class="score-tracker transparent">
+    <p><strong id="top-score">Your Top Score: </strong><span ><strong id="score">0</strong></span></p>
+</div>
 
 <!-- Create 4 divs to display the sequence Simple Simon generates and user to click on -->
 
@@ -26,6 +44,7 @@
 <div class="start-container">
     <button id="start-btn">New Game</button>
 </div>
+
 <!-- Label for the round that you are currently on -->
 
 <div class="round-label">
@@ -33,193 +52,13 @@
     <p><span ><strong id="round" class="round-animate">1</strong></span></p>
 </div>
 
+
 <!-- JQuery -->
 <script
         src="https://code.jquery.com/jquery-2.2.4.min.js"
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
         crossorigin="anonymous"></script>
 
-<script>
-    (function () {
-        "use strict";
-
-        //Allow user to start the game by clicking on the start button
-
-        $('#start-btn').click(function () {
-            $('.start-container').addClass('hidden');
-            $('.round-label').addClass('active');
-            generatePattern();
-            console.log(sequence);
-
-
-        });
-
-        //Once start is clicked, Simon will generate and display a step for user to follow/repeat.
-        var sequence = [];
-        var userInput = [];
-        var i = 0;
-        var red = 1;
-        var green = 2;
-        var blue = 3;
-        var yellow = 4;
-
-        function random() {
-            return Math.floor((Math.random() * 4) + 1);
-        }
-
-
-        //generate a color to add to the sequence
-
-        function generatePattern() {
-            sequence.push(random());
-            setTimeout(function () {
-                displayPattern();
-            }, 1000);
-        }
-
-
-        function lightUp(box, color) {
-            $(box).addClass('light-up-' + color);
-            setTimeout(function () {
-                $(box).removeClass('light-up-' + color);
-            }, 400);
-        }
-
-        function borderLight(result) {
-            $('.container').addClass('border-' + result);
-            setTimeout(function() {
-                $('.container').removeClass('border-' + result);
-            }, 400);
-        }
-
-        function roundNumber() {
-            $('#round').removeClass('round-animate');
-            setTimeout(function() {
-                $('#round').addClass('round-animate');
-            }, 1);
-        }
-
-
-        //display Pattern
-        function displayPattern() {
-            var i = 0;
-            var intervalId = setInterval(function () {
-
-                switch (sequence[i]) {
-                    case 1:
-                        lightUp('.red', 'red');
-                        break;
-                    case 2:
-                        lightUp('.green', 'green');
-                        break;
-                    case 3:
-                        lightUp('.blue', 'blue');
-                        break;
-                    case 4:
-                        lightUp('.yellow', 'yellow');
-                        break;
-                }
-
-                if (i == sequence.length - 1) {
-                    clearInterval(intervalId);
-                } else {
-                    i++;
-                }
-
-            }, 500);
-
-        }
-
-        //Allow user to repeat pattern that was shown
-
-
-        //Make buttons light up on click
-        $('.red').click(function () {
-            lightUp(this, 'red');
-        });
-
-        $('.green').click(function () {
-            lightUp(this, 'green');
-        });
-
-        $('.blue').click(function () {
-            lightUp(this, 'blue');
-        });
-
-        $('.yellow').click(function () {
-            lightUp(this, 'yellow');
-        });
-
-        var roundCounter = 1;
-
-        $('.box').click(function () {
-//             var i = 0;
-            var boxValue = parseFloat($(this).attr('data-value'));
-            userInput.push(boxValue);
-
-            console.log(userInput);
-
-            if(boxValue === sequence[i]) {
-                i++;
-                if(userInput.length === sequence.length) {
-                    generatePattern();
-                    console.log(sequence);
-                    i = 0;
-                    userInput = [];
-                    roundCounter++;
-                    $('#round').html(roundCounter);
-                    roundNumber();
-                    borderLight('correct')
-
-
-                }
-
-            } else {
-                i = 0;
-                sequence = [];
-                userInput = [];
-                $('.start-container').removeClass('hidden');
-                $('.round-label').removeClass('active');
-//                alert("You Lose!! :'" +"(");
-                roundCounter = 1;
-                $('#round').html(1);
-                borderLight('wrong');
-
-
-            }
-
-
-
-//
-//            console.log('var i = '+i);
-//            console.log('sequence.lenght =' +sequence.length);
-//            console.log('boxValue = ' +boxValue);
-//            console.log('value at seqyence index i index = ' +sequence[i]);
-//            console.log('clicks =' + clicks);
-//            console.log('--------------------------------');
-//
-//
-//            if (boxValue === sequence[i]) {
-////                console.log(boxValue);
-//                i++;
-//                clicks++;
-//
-//                if (clicks >= sequence.length) {
-//
-//                    generatePattern();
-//                    console.log(sequence);
-//
-//                }
-//            } else {
-//                i = 0;
-//            }
-        });
-        //If user is correct in pattern given, update the round that the user in in
-        // allow Simon to generate an additional step to add on the existing pattern
-
-        //If user fail, alert will be given and Simon pattern will be reset until user starts new game.
-
-    })();
-</script>
+<script src="js/index.js"></script>
 </body>
 </html>

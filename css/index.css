@@ -7,6 +7,8 @@ html {
     background-image: url('../img/spiral.gif');
     background-repeat: no-repeat;
     background-size: cover;
+    /*width: 100%;*/
+    /*height: auto;*/
 }
 
 @keyframes fade-in {
@@ -88,9 +90,64 @@ html {
     color: white;
 }
 
+#S-simple:hover {
+    color: red;
+    font-size: 30px;
+}
+
+#i-simple:hover {
+    color: green;
+    font-size: 30px;
+}
+
+#m-simple:hover {
+    color: blue;
+    font-size: 30px;
+}
+
+#p:hover {
+    color: yellow;
+    font-size: 30px;
+}
+
+#l:hover {
+    color: red;
+    font-size: 30px;
+}
+
+#e:hover {
+    color: green;
+    font-size: 30px;
+}
+
+#S-simon:hover {
+    color: blue;
+    font-size: 30px;
+}
+
+#i-simon:hover {
+    color: yellow;
+    font-size: 30px;
+}
+
+#m-simon:hover {
+    color: red;
+    font-size: 30px;
+}
+
+#o:hover {
+    color: green;
+    font-size: 30px;
+}
+
+#n:hover {
+    color: blue;
+    font-size: 30px;
+}
+
 .container {
-    width: 500px;
-    height: 500px;
+    width: 450px;
+    height: 450px;
     margin: auto;
     border: solid 5px white;
     background-color: transparent;
@@ -182,6 +239,11 @@ html {
     border: solid 2px white;
 }
 
+.score-tracker {
+    color: white;
+    /*background-color: white;*/
+}
+
 .start-container {
     /*text-align: center;*/
     size: 20px;
@@ -193,10 +255,10 @@ html {
 }
 
 #start-btn {
-    margin-top: 3%;
     height: 50px;
     width: 60px;
     color: white;
+    margin: 3%;
 }
 
 .round-label {
@@ -213,11 +275,13 @@ html {
 
 .round-animate {
     animation: font-style 2s;
+    position: fixed;
 }
 
 .active {
     display: inline-block;
 }
 
-
-
+.transparent {
+    color: transparent;
+}
