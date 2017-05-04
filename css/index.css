@@ -256,9 +256,9 @@ html {
 
 #start-btn {
     height: 50px;
-    width: 60px;
+    width: 100px;
     color: white;
-    margin: 3%;
+    border: none;
 }
 
 .round-label {
@@ -276,6 +276,7 @@ html {
 .round-animate {
     animation: font-style 2s;
     position: fixed;
+    margin-top: 1%;
 }
 
 .active {
