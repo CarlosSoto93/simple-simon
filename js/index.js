@@ -10,8 +10,6 @@
         $('.start-container').addClass('hidden');
         $('.round-label').addClass('active');
         generatePattern();
-
-
     });
 
     //Once start is clicked, Simon will generate and display a step for user to follow/repeat.
@@ -93,8 +91,6 @@
     function displayPattern() {
         var i = 0;
         var intervalId = setInterval(function () {
-
-
             switch (sequence[i]) {
                 case 1:
                     lightUp('.red', 'red');
@@ -109,7 +105,6 @@
                     lightUp('.yellow', 'yellow');
                     break;
             }
-
             if (i == sequence.length - 1) {
                 clearInterval(intervalId);
             } else {
@@ -143,10 +138,8 @@
     $('.box').click(function () {
         var boxValue = parseFloat($(this).attr('data-value'));
         userInput.push(boxValue);
-
         if(boxValue === sequence[i]) {
             i++;
-
             //If user is correct in pattern given, update the round that the user in
             // allow Simon to generate an additional step to add on the existing pattern
             if(userInput.length === sequence.length) {
@@ -159,7 +152,6 @@
                 roundNumber();
                 borderLight('correct')
             }
-
         //If user fail, Simon pattern will be reset until user starts new game.
         } else {
             i = 0;
@@ -173,9 +165,8 @@
             fadeRestart();
             $('.score-tracker').removeClass('transparent');
         }
-
-
-
+    });
+})();
 //
 //            console.log('var i = '+i);
 //            console.log('sequence.lenght =' +sequence.length);
@@ -199,7 +190,3 @@
 //            } else {
 //                i = 0;
 //            }
-    });
-
-
-})();

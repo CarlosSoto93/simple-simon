@@ -11,6 +11,7 @@ html {
     /*height: auto;*/
 }
 
+/*animations*/
 @keyframes fade-in {
     from {
         opacity: 0;
@@ -86,6 +87,8 @@ html {
     }
 }
 
+
+/* title style */
 #title {
     color: white;
 }
@@ -145,6 +148,7 @@ html {
     font-size: 30px;
 }
 
+/* Game borders and containers */
 .container {
     width: 450px;
     height: 450px;
@@ -180,6 +184,7 @@ html {
     border: solid 2px;
 }
 
+/* Red Box */
 .red {
     /*background-color: red;*/
     /*opacity: .5;*/
@@ -195,6 +200,7 @@ html {
     border: solid 2px white;
 }
 
+/* Green Box */
 .green {
     /*background-color: green;*/
     /*opacity: .5;*/
@@ -211,6 +217,7 @@ html {
     border: solid 2px white;
 }
 
+/* Blue Box */
 .blue {
     /*background-color: blue;*/
     /*opacity: .5;*/
@@ -226,6 +233,7 @@ html {
     border: solid 2px white;
 }
 
+/* Yellow Box */
 .yellow {
     border-color: yellow;
 }
@@ -239,6 +247,8 @@ html {
     border: solid 2px white;
 }
 
+
+/* Game Labels and round number */
 .score-tracker {
     color: white;
     /*background-color: white;*/
@@ -248,10 +258,6 @@ html {
     /*text-align: center;*/
     size: 20px;
     color: white
-}
-
-.hidden {
-    display: none;
 }
 
 #start-btn {
@@ -271,16 +277,20 @@ html {
 
 #round {
     color: white;
-}
-
-.round-animate {
-    animation: font-style 2s;
     position: fixed;
     margin-top: 1%;
 }
 
+.round-animate {
+    animation: font-style 2s;
+}
+
 .active {
     display: inline-block;
+}
+
+.hidden {
+    display: none;
 }
 
 .transparent {
